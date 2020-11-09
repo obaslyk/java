@@ -28,4 +28,22 @@ public class ContactHelper extends HelperBase {
   public void initAddContact() {
     click(By.linkText("add new"));
   }
+
+  public void selectContact() {
+//    click(By.id("28"));
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//input[@value='Delete']"));
+    wd.switchTo().alert().accept();
+  }
+
+  public void initClassModification() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void updateContactForm() {
+    click(By.name("update"));
+  }
 }
