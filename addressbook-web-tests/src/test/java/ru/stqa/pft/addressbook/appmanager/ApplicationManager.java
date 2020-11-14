@@ -37,7 +37,7 @@ public class ApplicationManager {
   }
 
   public SessionHelper getSessionHelper() {
-    return null;
+    return sessionHelper;
   }
 
   public ContactHelper getContactHelper() {
