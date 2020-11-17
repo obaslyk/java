@@ -9,10 +9,9 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification() {
     if (! app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().gotoGroupPage();
-      app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+
       app.getNavigationHelper().returnToHomePage();
-      app.getContactHelper().createContact(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "test1"));
+      app.getContactHelper().createContact(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "[none]"));
     }
     app.getNavigationHelper().returnToHomePage();
     app.getContactHelper().initClassModification();
