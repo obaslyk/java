@@ -46,7 +46,6 @@ public class GroupHelper extends HelperBase {
 
   public void submitGroupModification() {
     click(By.name("update"));
-//    wd.findElement(By.cssSelector("div.msgbox"));
     returnToGroupPage();
   }
 
@@ -67,16 +66,11 @@ public class GroupHelper extends HelperBase {
 
   public List<GroupData> getGroupList() {
     List<GroupData> groups = new ArrayList<GroupData>();
-//    найти все элементы, имеющие тег span и класс group:
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
-//    пройти по всем элементам в цикле и для каждого из них выполнить какое-то действие
-//    переменная element пробегает по списку elements
     for (WebElement element : elements) {
-//      из каждого элемента получаем текст (имя группы):
       String name = element.getText();
-//      далее создаем объект GroupData
-      GroupData group = new GroupData(name, null, null);
-//      добавляем созданный объект в список:
+      String id = element.findElement(By.tagName("input")).getAttribute("value");
+      GroupData group = new GroupData(id, name, null, null);
       groups.add(group);
     }
     return groups;
