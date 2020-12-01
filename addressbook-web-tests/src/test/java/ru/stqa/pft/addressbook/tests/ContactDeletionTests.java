@@ -9,11 +9,11 @@ public class ContactDeletionTests extends TestBase {
 
   @Test
   public void testContactDelete() throws InterruptedException {
-    int before = app.getContactHelper().getContactCount();
     if (! app.getContactHelper().isThereAContact()) {
       app.getNavigationHelper().returnToHomePage();
       app.getContactHelper().createContact(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "[none]"));
     }
+    int before = app.getContactHelper().getContactCount();
     app.getNavigationHelper().returnToHomePage();
     app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteSelectedContact();
