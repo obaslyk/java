@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,14 +18,26 @@ public class AddContactTests extends TestBase {
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
-    int max = 0;
-    for (ContactData g : after) {
-      if (g.getId() > max) {
-        max = g.getId();
-      }
-    }
-    contact.setId(max);
+//   1 способ (использование цикла)
+//    int max = 0;
+//    for (ContactData g : after) {
+//      if (g.getId() > max) {
+//        max = g.getId();
+//      }
+//    }
+
+////    2 способ (с помощью анонимного класса)
+//    Comparator<? super ContactData> byid = new Comparator<ContactData>() {
+//      @Override
+//      public int compare(ContactData o1, ContactData o2) {
+//        return Integer.compare(o1.getId(), o2.getId());
+//      }
+//    };
+//    int max = after.stream().max(byid).get().getId();
+
+//   3 способ при помощи потоков и анонимных функций (лямбда выражений)
+    contact.setId(after.stream().max( (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(contact);
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+    Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
   }
 }
