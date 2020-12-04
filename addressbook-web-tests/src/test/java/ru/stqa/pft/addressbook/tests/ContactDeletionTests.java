@@ -12,7 +12,7 @@ public class ContactDeletionTests extends TestBase {
   @BeforeMethod
   public  void ensurePreconditions() {
     if (! app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().returnToHomePage();
+      app.goTo().returnToHomePage();
       app.getContactHelper().createContact(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "[none]"));
     }
   }
@@ -20,7 +20,7 @@ public class ContactDeletionTests extends TestBase {
   @Test
   public void testContactDelete() throws InterruptedException {
     List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
     Thread.sleep(3000);
