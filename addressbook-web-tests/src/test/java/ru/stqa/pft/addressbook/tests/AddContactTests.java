@@ -12,12 +12,12 @@ public class AddContactTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    app.goTo().returnToHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
+    app.goTo().homePage();
+    List<ContactData> before = app.contact().list();
     ContactData contact = new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "test1");
-    app.getContactHelper().createContact(contact);
-    app.goTo().returnToHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().create(contact);
+    app.goTo().homePage();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 //   1 способ (использование цикла)

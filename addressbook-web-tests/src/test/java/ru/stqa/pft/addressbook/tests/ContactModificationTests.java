@@ -11,26 +11,25 @@ public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public  void ensurePreconditions() {
-    if (! app.getContactHelper().isThereAContact()) {
-      app.goTo().returnToHomePage();
-      app.getContactHelper().createContact(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "[none]"));
+    if (app.contact().list().size() == 0) {
+      app.goTo().homePage();
+      app.contact().create(new ContactData("Olga", "Petrova", "123456789", "12345@mail.ru", "[none]"));
     }
   }
 
   @Test
   public void testContactModification() throws InterruptedException {
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.goTo().returnToHomePage();
-    app.getContactHelper().initClassModification(before.get(before.size() - 1).getId());
-    ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Olga", "Petrova", "123456789", "12345@mail.ru", null);
-    app.getContactHelper().fillContactForm(contact, false);
-    app.getContactHelper().updateContactForm();
-    app.goTo().returnToHomePage();
+    List<ContactData> before = app.contact().list();
+    int index = before.size() - 1;
+    ContactData contact = new ContactData(before.get(index).getId(), "Olga", "Petrova", "123456789", "12345@mail.ru", null);
+    app.goTo().homePage();
+    app.contact().modify(before, index, contact);
+    app.goTo().homePage();
     Thread.sleep(3000);
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     before.add(contact);
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);
