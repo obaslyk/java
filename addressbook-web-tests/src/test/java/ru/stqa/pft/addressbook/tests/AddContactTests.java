@@ -4,9 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.Comparator;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class AddContactTests extends TestBase {
