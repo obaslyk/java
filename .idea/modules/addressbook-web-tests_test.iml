@@ -11,6 +11,7 @@
     <orderEntry type="module" module-name="addressbook-web-tests_main" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6" level="project" />
     <orderEntry type="library" name="Gradle: org.testng:testng:7.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest:2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-support:4.0.0-alpha-6" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-chrome-driver:4.0.0-alpha-6" level="project" />
     <orderEntry type="library" name="Gradle: org.seleniumhq.selenium:selenium-edge-driver:4.0.0-alpha-6" level="project" />
