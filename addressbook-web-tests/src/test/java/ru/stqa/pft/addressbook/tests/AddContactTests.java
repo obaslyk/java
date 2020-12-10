@@ -14,7 +14,7 @@ public class AddContactTests extends TestBase {
     app.goTo().homePage();
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
-            .withFirstname("Olga").withLastname("Petrova").withHome("123456789")
+            .withFirstName("Olga").withLastName("Petrova").withHome("123456789")
             .withEmail("12345@mail.ru").withGroup("test1");
     app.contact().create(contact);
     app.goTo().homePage();
@@ -29,7 +29,7 @@ public class AddContactTests extends TestBase {
     app.goTo().homePage();
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
-            .withFirstname("Olga'").withLastname("Petrova").withHome("123456789")
+            .withFirstName("Olga'").withLastName("Petrova").withHome("123456789")
             .withEmail("12345@mail.ru").withGroup("test1");
     app.contact().create(contact);
     app.goTo().homePage();

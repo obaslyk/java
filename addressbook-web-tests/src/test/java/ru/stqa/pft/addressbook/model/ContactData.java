@@ -2,14 +2,49 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
   private int id = Integer.MAX_VALUE;
-  private String firstname;
-  private String lastname;
+  private String firstName;
+  private String lastName;
   private String home;
   private String email;
   private String group;
+  private String homePhone;
+  private String mobilePhone;
+  private String workPhone;
 
   public int getId() {
     return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public String getHome() {
+    return home;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getGroup() {
+    return group;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
   }
 
   public ContactData withId(int id) {
@@ -17,13 +52,13 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withFirstname(String firstname) {
-    this.firstname = firstname;
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
     return this;
   }
 
-  public ContactData withLastname(String lastname) {
-    this.lastname = lastname;
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
     return this;
   }
 
@@ -41,33 +76,28 @@ public class ContactData {
     this.group = group;
     return this;
   }
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
 
-  public String getFirstname() {
-    return firstname;
+    return this;
   }
 
-  public String getLastname() {
-    return lastname;
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
+    return this;
   }
 
-  public String getHome() {
-    return home;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public String getGroup() {
-    return group;
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
             "id='" + id + '\'' +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
             '}';
   }
 
@@ -79,15 +109,17 @@ public class ContactData {
     ContactData that = (ContactData) o;
 
     if (id != that.id) return false;
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+    return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
   }
 
   @Override
   public int hashCode() {
     int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+    result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     return result;
   }
+
 }
+
