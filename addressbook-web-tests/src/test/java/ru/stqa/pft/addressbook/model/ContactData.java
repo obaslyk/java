@@ -76,9 +76,9 @@ public class ContactData {
     this.group = group;
     return this;
   }
+
   public ContactData withHomePhone(String homePhone) {
     this.homePhone = homePhone;
-
     return this;
   }
 
