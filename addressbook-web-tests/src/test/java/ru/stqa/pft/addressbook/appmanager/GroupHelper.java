@@ -66,6 +66,7 @@ public class GroupHelper extends HelperBase {
     fillGroupForm(group);
     submitGroupModification();
     groupCache = null;
+    returnToGroupPage();
   }
 
   public void delete(GroupData group) {
@@ -79,7 +80,7 @@ public class GroupHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public int count() {
+  public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
