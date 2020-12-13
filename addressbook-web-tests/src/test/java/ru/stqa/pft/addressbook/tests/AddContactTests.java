@@ -11,11 +11,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AddContactTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testContactCreation() throws Exception {
     app.goTo().homePage();
     Contacts before = app.contact().all();
-    File photo = new File("src/test/resources");
+    File photo = new File("resources/stru.png");
     ContactData contact = new ContactData()
             .withFirstName("Tanya")
             .withLastName("Petrova")
@@ -31,14 +31,14 @@ public class AddContactTests extends TestBase {
             contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 
-  @Test
-  public void testCurrentDir() {
-    File currentDir = new File(".");
-    System.out.println(currentDir.getAbsolutePath());
-    File photo = new File("src/test/resources");
-    System.out.println(photo.getAbsolutePath());
-    System.out.println(photo.exists());
-  }
+//  @Test (enabled = false)
+//  public void testCurrentDir() {
+//    File currentDir = new File(".");
+//    System.out.println(currentDir.getAbsolutePath());
+//    File photo = new File("resources/stru.png");
+//    System.out.println(photo.getAbsolutePath());
+//    System.out.println(photo.exists());
+// }
 }
 
 
