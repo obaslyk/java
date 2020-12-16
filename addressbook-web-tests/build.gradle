@@ -9,5 +9,8 @@ dependencies {
     compile 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6'
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.beust:jcommander:1.78'
-    implementation 'com.thoughtworks.xstream:xstream:1.4.15'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.14'
+    compile ('com.thoughtworks.xstream:xstream:1.4.7') {
+        exclude group: 'xmlpull', module: 'xmlpull'
+    }
 }
