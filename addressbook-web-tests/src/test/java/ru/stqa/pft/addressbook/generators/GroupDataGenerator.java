@@ -4,6 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
@@ -51,7 +52,7 @@ public class GroupDataGenerator {
 
     private void saveAsXml(List<GroupData> groups, File file) throws IOException {
 //        XStream xstream = new XStream();
-        XStream xstream = new XStream(new StaxDriver());
+        XStream xstream = new XStream(new DomDriver());
         xstream.processAnnotations(GroupData.class);
         String xml = xstream.toXML(groups);
         Writer writer = new FileWriter(file);
