@@ -8,9 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/java_pft.iml" filepath="$PROJECT_DIR$/.idea/java_pft.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_pft.addressbook-web-tests.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java_pft.addressbook-web-tests.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_pft.addressbook-web-tests.test.iml" filepath="$PROJECT_DIR$/.idea/modules/java_pft.addressbook-web-tests.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.iml" group="sandbox" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_main.iml" group="sandbox" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_test.iml" group="sandbox" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.main.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.test.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.test.iml" />
     </modules>
   </component>
 </project>
