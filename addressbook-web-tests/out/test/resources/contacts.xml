@@ -1,0 +1,17 @@
+<list>
+  <contact>
+    <firstName>firstName 0</firstName>
+    <lastName>lastName 0</lastName>
+    <homePhone>phone 0</homePhone>
+  </contact>
+  <contact>
+    <firstName>firstName 1</firstName>
+    <lastName>lastName 1</lastName>
+    <homePhone>phone 1</homePhone>
+  </contact>
+  <contact>
+    <firstName>firstName 2</firstName>
+    <lastName>lastName 2</lastName>
+    <homePhone>phone 2</homePhone>
+  </contact>
+</list>
