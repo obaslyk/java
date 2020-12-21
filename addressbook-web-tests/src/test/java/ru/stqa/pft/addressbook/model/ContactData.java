@@ -64,18 +64,18 @@ public class ContactData {
   @Transient
   private String allPhones;
 
-  @Column(name = "photo")
-  @Type(type = "text")
-  private String photo;
-
-  public File getPhoto() {
-    return new File(photo);
-  }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
+//  @Column(name = "photo")
+//  @Type(type = "text")
+//  private String photo;
+//
+//  public File getPhoto() {
+//    return new File(photo);
+//  }
+//
+//  public ContactData withPhoto(File photo) {
+//    this.photo = photo.getPath();
+//    return this;
+//  }
 
   public String getAllEmails() {
     return allEmails;
