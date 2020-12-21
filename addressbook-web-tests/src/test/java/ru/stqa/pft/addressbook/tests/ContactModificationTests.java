@@ -23,16 +23,16 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() throws InterruptedException {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId()).withFirstName("Olga").withLastName("Petrova")
-            .withEmail("12345@mail.ru");
+            .withEmail("22345@mail.ru");
     app.goTo().homePage();
     app.contact().modify(contact);
     app.goTo().homePage();
     Thread.sleep(3000);
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.withOut(modifiedContact).withAdded(contact)));
   }
