@@ -68,60 +68,10 @@ public class ContactData {
 //  @Type(type = "text")
 //  private String photo;
 //
-//  public File getPhoto() {
-//    return new File(photo);
-//  }
-//
 //  public ContactData withPhoto(File photo) {
 //    this.photo = photo.getPath();
 //    return this;
 //  }
-
-  public String getAllEmails() {
-    return allEmails;
-  }
-
-  public ContactData withAllEmails(String allEmails) {
-    this.allEmails = allEmails;
-    return this;
-  }
-
-  public String getEmail2() {
-    return email2;
-  }
-
-  public ContactData withEmail2(String email2) {
-    this.email2 = email2;
-    return this;
-  }
-
-  public String getEmail3() {
-    return email3;
-  }
-
-  public ContactData withEmail3(String email3) {
-    this.email3 = email3;
-    return this;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public ContactData withAddress(String address) {
-    this.address = address;
-    return this;
-  }
-
-
-  public String getAllPhones() {
-    return allPhones;
-  }
-
-  public ContactData withAllPhones(String allPhones) {
-    this.allPhones = allPhones;
-    return this;
-  }
 
   public int getId() {
     return id;
@@ -136,11 +86,28 @@ public class ContactData {
   }
 
   public String getEmail() {
-    return email;
+    return null == email ? "" : email;
+  }
+
+
+  public String getEmail2() {
+    return null == email2 ? "" : email2;
+  }
+
+  public String getEmail3() {
+    return null == email3 ? "" : email3;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
   }
 
   public String getGroup() {
     return group;
+  }
+
+  public String getAddress() {
+    return address;
   }
 
   public String getHomePhone() {
@@ -154,6 +121,14 @@ public class ContactData {
   public String getWorkPhone() {
     return workPhone;
   }
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  //  public File getPhoto() {
+//    return new File(photo);
+//  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -172,6 +147,26 @@ public class ContactData {
 
   public ContactData withEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
     return this;
   }
 
@@ -195,13 +190,9 @@ public class ContactData {
     return this;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            '}';
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
   }
 
   @Override
@@ -212,9 +203,11 @@ public class ContactData {
     ContactData that = (ContactData) o;
 
     if (id != that.id) return false;
-    if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-    if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-    return email != null ? email.equals(that.email) : that.email == null;
+    if (!getFirstName().equals(that.getFirstName())) return false;
+    if (!getLastName().equals(that.getLastName())) return false;
+    if (!getEmail().equals(that.getEmail())) return false;
+    if (!getEmail2().equals(that.getEmail2())) return false;
+    return getEmail3().equals(that.getEmail3());
   }
 
   @Override
@@ -223,7 +216,18 @@ public class ContactData {
     result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
     result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
     result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+    result = 31 * result + (email3 != null ? email3.hashCode() : 0);
     return result;
+  }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id='" + id + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
   }
 }
 
