@@ -18,7 +18,7 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.3'
     // для подключения к БД
     implementation 'mysql:mysql-connector-java:8.0.22'
-
+//    для решения задач объектно-реляционного отображения (ORM)
     implementation 'org.hibernate.orm:hibernate-core:6.0.0.Alpha6'
 }
 
