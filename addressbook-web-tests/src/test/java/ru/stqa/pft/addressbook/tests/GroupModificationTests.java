@@ -32,9 +32,9 @@ public class GroupModificationTests extends TestBase {
             .withId(modifiedGroup.getId()).withName("test1").withHeader("test2").withFooter("test3");
     app.goTo().groupPage();
     app.group().modify(group);
-//    Thread.sleep(1000);
     Groups after = app.db().groups();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
+    verifyGroupListInUI();
   }
 }
