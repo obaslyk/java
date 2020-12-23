@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -146,4 +147,24 @@ public class ContactHelper extends HelperBase {
     return new Contacts(contactCache);
   }
 
+  public void selectShowGroup(String name) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText(name);
+  }
+
+  public void deleteFromGroup(String name) {
+    click(By.name("remove"));
+  }
+
+  public void addContactToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    click(By.name("add"));
+  }
+
+  public void deleteContactFromGroup(ContactData contact, GroupData group) {
+    selectShowGroup(group.getName());
+    selectContactById(contact.getId());
+    deleteFromGroup(group.getName());
+  }
 }
+
