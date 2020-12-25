@@ -13,41 +13,60 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  private final Properties properties;
-  private WebDriver wd;
+    private final Properties properties;
+    private WebDriver wd;
 
-  private String browser;
+    private String browser;
+    private RegistrationHelper registrationHelper;
 
-  public ApplicationManager(String browser)  {
-    this.browser = browser;
-    properties = new Properties();
-  }
-
-  public void init() throws IOException {
-    String  target = System.getProperty("target", "local");
-    properties.load(new FileReader(new File(String.format("D:/PGI/Autotest/Develop/java_pft/mantis-tests/src/test/resources/%s.properties", target))));
-//    properties.load(new FileReader(new File(String.format("D:\\PGI\\Autotest\\Develop\\java_pft\\mantis-tests\\src\\test\\resources\\local.properties%s.properties", target))));
-
-    if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    } else if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.IE)) {
-      wd = new InternetExplorerDriver();
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+        properties = new Properties();
     }
-    wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.baseUrl"));
-  }
 
-  public void stop() {
-    wd.quit();
-  }
+    public void init() throws IOException {
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("D:/PGI/Autotest/Develop/java_pft/mantis-tests/src/test/resources/%s.properties", target))));
+    }
 
-  public HttpSession newSession() {
-    return new HttpSession(this);
-  }
+    public void stop() {
+        if (wd != null) {
+            wd.quit();
+        }
+    }
 
-  public String getProperty(String key) {
-    return properties.getProperty(key);
-  }
+    public HttpSession newSession() {
+        return new HttpSession(this);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    public RegistrationHelper registration() {
+        if (registrationHelper == null) {
+            registrationHelper = new RegistrationHelper(this);
+        }
+        return registrationHelper;
+    }
+
+    //  инициализирует браузер в момент превого обращения
+    public WebDriver getDriver() {
+        if (wd == null) {
+            if (browser.equals(BrowserType.FIREFOX)) {
+                wd = new FirefoxDriver();
+            } else if (browser.equals(BrowserType.CHROME)) {
+                wd = new ChromeDriver();
+            } else if (browser.equals(BrowserType.IE)) {
+                wd = new InternetExplorerDriver();
+            }
+            wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            wd.get(properties.getProperty("web.baseUrl"));
+        }
+        return wd;
+    }
 }
+
+
+
+
