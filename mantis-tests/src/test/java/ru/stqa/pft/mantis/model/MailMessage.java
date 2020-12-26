@@ -9,3 +9,4 @@ public class MailMessage {
         this.text = text;
     }
 }
+
