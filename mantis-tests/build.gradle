@@ -11,6 +11,12 @@ dependencies {
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'commons-net:commons-net:3.7.2'
+//    для работы с почтовым клиентом
+    implementation 'org.subethamail:subethasmtp:3.1.7'
+//   для работы с регулярными выражениями
+    implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
+//    для протоколирования логов
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 test {
