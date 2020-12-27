@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.0.0'
+// для взаимодействия с gitHub
+    implementation 'com.jcabi:jcabi-github:1.1.2'
+}
