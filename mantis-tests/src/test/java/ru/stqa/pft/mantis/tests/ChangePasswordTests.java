@@ -1,5 +1,6 @@
 package ru.stqa.pft.mantis.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -22,28 +23,24 @@ public class ChangePasswordTests extends TestBase {
     public void testChangePassword() throws IOException, InterruptedException, MessagingException {
         // Получение информации о пользователе из БД
         UserData user = app.db().user();
-        // Подготовка параметров
         String email = user.getEmail();
-        // String password = "new_password";
-        // Авторизация в приложении
+        String password = "new_password";
         app.changePassword().loginUI("administrator", "root");
-        // Инициализация смены пароля пользователя
+        // смена пароля пользователя
         app.changePassword().start(user.getId());
         // Ожидание почтового сообщения
         List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
         // Извлечение ссылки на подтверждение регистрации
         String confirmationLink = findConfirmationLink(mailMessages, email);
         System.out.println(confirmationLink);
+        app.changePassword().finish(confirmationLink, password);
+        // Вход в приложение с новым паролем
+        Assert.assertTrue(app.newSession().login(user.getUsername(), password));
     }
 
-    // Среди всех сообщений нужно найти то, которое отправлено на email
-    // После нужно извлечь ссылку на подтверждение регистрации
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
         MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-        // Поиск ссылки на подтверждение регистрации с помощью библотеки verbalregex
-        // Найти подстроку "http://", за ней должны идти один или более непробельных символов
         VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
-        // Выполнение регулярного выражения
         return regex.getText(mailMessage.text);
     }
 
