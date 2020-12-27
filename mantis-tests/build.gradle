@@ -21,6 +21,7 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.22'
 //    для решения задач объектно-реляционного отображения (ORM)
     implementation 'org.hibernate:hibernate-core:5.4.24.Final'
+    implementation 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 }
 
 test {
