@@ -17,6 +17,10 @@ dependencies {
     implementation 'ru.lanwen.verbalregex:java-verbal-expressions:1.6'
 //    для протоколирования логов
     implementation 'ch.qos.logback:logback-classic:1.2.3'
+    // для подключения к БД
+    implementation 'mysql:mysql-connector-java:8.0.22'
+//    для решения задач объектно-реляционного отображения (ORM)
+    implementation 'org.hibernate:hibernate-core:5.4.24.Final'
 }
 
 test {
