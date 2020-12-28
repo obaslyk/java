@@ -22,7 +22,7 @@ public class RestTests {
 //        получаем старый список баг-репортов
         Set<Issue> oldIssues = getIssues();
 //        создаем новый баг-репорт
-        Issue newIssue = new Issue();//.withSubject("Test issue").withDescription("New test issue");
+        Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
         int issueId = createIssue(newIssue);
 ////        получаем новый список баг-репортов
         Set<Issue> newIssues = getIssues();
@@ -55,7 +55,6 @@ public class RestTests {
         // извлекаем ИД нового баг-репорта и возврат результата в виде целого числа
         return parsed.getAsJsonObject().get("issue_id").getAsInt();
     }
-
 
     private Executor getExecutor() {
         return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");

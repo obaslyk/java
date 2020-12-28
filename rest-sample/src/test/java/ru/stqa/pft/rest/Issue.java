@@ -1,21 +1,15 @@
 package ru.stqa.pft.rest;
 
+import java.util.Objects;
+
 public class Issue {
     private int id;
     private String subject;
     private String description;
 
-    public int getId() {
-        return id;
-    }
-
     public Issue withId(int id) {
         this.id = id;
         return this;
-    }
-
-    public String getSubject() {
-        return subject;
     }
 
     public Issue withSubject(String subject) {
@@ -23,12 +17,42 @@ public class Issue {
         return this;
     }
 
+    public Issue withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public Issue withDescription(String description) {
-        this.description = description;
-        return this;
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", subject='" + subject + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Issue issue = (Issue) o;
+        return id == issue.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
