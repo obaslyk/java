@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import static java.util.UUID.fromString;
 
 public class ApplicationManager {
   private final Properties properties;
@@ -43,11 +46,14 @@ public class ApplicationManager {
         wd = new FirefoxDriver();
       } else if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
+      } else if (browser.equals(BrowserType.IE)) {
+        wd = new InternetExplorerDriver();
+      } else {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName(browser);
+//        capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "win10")));
+        wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
       }
-    } else {
-      DesiredCapabilities capabilities = new DesiredCapabilities();
-      capabilities.setBrowserName(browser);
-      wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
     }
 
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -58,6 +64,8 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }
+
+
   public void stop() {
     wd.quit();
   }
